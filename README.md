@@ -3,7 +3,7 @@
 Send files from your computer to your phone over the local network. No cloud, no cables, no pairing — the phone app advertises itself via mDNS and the CLI finds it automatically.
 
 - `app/` — Flutter app ("Phone Drop") that runs on the phone. Advertises `_phoneupload._tcp` via mDNS (Bonjour/NSD), runs an HTTP server on a random port, saves incoming files, and lists them with a share button.
-- `cli/` — Rust desktop GUI (egui) that discovers the phone via mDNS and streams files to it.
+- `gui/` — Rust desktop GUI (egui) that discovers the phone via mDNS and streams files to it.
 
 ## Usage
 
@@ -15,8 +15,8 @@ Send files from your computer to your phone over the local network. No cloud, no
 ## Build
 
 ```sh
-# CLI
-cd cli && cargo build --release   # binary at target/release/phone-upload
+# Desktop GUI
+cd gui && cargo build --release   # binary at target/release/phone-upload
 
 # App
 cd app && flutter build apk --release   # or: flutter run
