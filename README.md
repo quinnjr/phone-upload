@@ -22,6 +22,18 @@ cd gui && cargo build --release   # binary at target/release/phone-upload
 cd app && flutter build apk --release   # or: flutter run
 ```
 
+## Git flow
+
+The repo follows [git-flow](https://nvie.com/posts/a-successful-git-branching-model/):
+
+- `main` — release history only; every commit is a tagged release.
+- `develop` — integration branch and the repo default; day-to-day work lands here.
+- `feature/<name>` — branched from and merged back into `develop`.
+- `release/<version>` — branched from `develop`; version bumps and fixes only, merged into `main` (tagged `vX.Y.Z`) and back into `develop`.
+- `hotfix/<version>` — branched from `main` for urgent fixes, merged into both `main` and `develop`.
+
+CI (`.github/workflows/build.yml`) runs tests and builds the desktop binaries (Linux/Windows/macOS) and the Android APK on every push and PR to `main`/`develop`, and attaches all of them to a GitHub Release when a `v*` tag is pushed.
+
 ## Protocol
 
 One request per file, plain HTTP on the advertised port:
